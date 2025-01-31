@@ -6,12 +6,13 @@ CREATE TABLE hospital (
 	hospital_id	SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     email VARCHAR(80) NOT NULL,
-    password VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT NULL,
     phone_number VARCHAR(20) NOT NULL,
     sector VARCHAR(50) NOT NULL,
     direction VARCHAR(100) NOT NULL,
     description VARCHAR(5000),
-    image VARCHAR(100)
+    image VARCHAR(100),
+    logic_delete BOOLEAN DEFAULT 0
 );
 
 CREATE TABLE doctor (
@@ -23,13 +24,14 @@ CREATE TABLE doctor (
     university_degree VARCHAR(100) NOT NULL,
     description VARCHAR(5000),
     image VARCHAR(100),
+    logic_delete BOOLEAN DEFAULT 0,
 	CONSTRAINT fk_hospital_id FOREIGN KEY (hospital_id)
 		REFERENCES hospital(hospital_id) ON DELETE CASCADE ON UPDATE CASCADE
     
 );
 
 INSERT INTO hospital (name, email, password, phone_number, sector, direction, description, image) 
-VALUES ('Hospital Central del sector XVII', 'hospitalcentralxvii@hospitalesinteresterales.espace', '1234', '952607080', 'Sector Central XVII', '24-00054-32', 'El Hospital Central del sector XVII es la cumbre de la medicina avanzada, un bastión de esperanza flotando entre las estrellas. Sus médicos, reconocidos en toda la galaxia, combinan tecnología de vanguardia con una compasión infinita, ofreciendo atención a múltiples especies con una precisión sin igual. Equipado con quirófanos antigravedad, inteligencia artificial diagnóstica y laboratorios de regeneración celular, el hospital es capaz de curar desde enfermedades humanas hasta dolencias exóticas de civilizaciones distantes. Su personal, entrenado en bioética interplanetaria, domina la genética cuántica y la cirugía neuroholográfica, asegurando tratamientos personalizados. Pacientes de todos los rincones del universo confían en su excelencia, sabiendo que cada médico, más allá de su inmenso conocimiento, entrega su corazón en cada caso. Nova Vita no solo sana cuerpos, sino que renueva vidas, iluminando la galaxia con su inquebrantable dedicación al bienestar universal.', 'FOTO');
+VALUES ('Hospital Central del sector XVII', 'hospitalcentralxvii@hospitalesinteresterales.espace', '1234', '952607080', 'Sector Central XVII', '24-00054-32', 'El Hospital Central del sector XVII es la cumbre de la medicina avanzada, un bastión de esperanza flotando entre las estrellas. Sus médicos, reconocidos en toda la galaxia, combinan tecnología de vanguardia con una compasión infinita, ofreciendo atención a múltiples especies con una precisión sin igual. Equipado con quirófanos antigravedad, inteligencia artificial diagnóstica y laboratorios de regeneración celular, el hospital es capaz de curar desde enfermedades humanas hasta dolencias exóticas de civilizaciones distantes. Su personal, entrenado en bioética interplanetaria, domina la genética cuántica y la cirugía neuroholográfica, asegurando tratamientos personalizados. Pacientes de todos los rincones del universo confían en su excelencia, sabiendo que cada médico, más allá de su inmenso conocimiento, entrega su corazón en cada caso. Nova Vita no solo sana cuerpos, sino que renueva vidas, iluminando la galaxia con su inquebrantable dedicación al bienestar universal.', 'latest-1-scaled.webp');
 
 
 INSERT INTO doctor (hospital_id, name, last_name, speciality, university_degree, description, image)
@@ -47,7 +49,7 @@ VALUES (1, 'Elena', 'Martínez Vega', 'Psicología Clínica', 'Doctora en Psicol
 
 INSERT INTO doctor (hospital_id, name, last_name, speciality, university_degree, description, image)
 VALUES (1, 'Unidad Anestésica', 'DP-0031', 'Anestesiología', 'Fábrica de médicos de la Academia Galáctica', 
-'DP_0031 es un robot anestesista de última generación diseñado para administrar anestesia con una precisión absoluta en procedimientos quirúrgicos interplanetarios. Equipado con inteligencia artificial avanzada y sensores biométricos en tiempo real, ajusta la dosificación con exactitud para cada paciente, independientemente de su fisiología o especie. Su capacidad para monitorear signos vitales y responder instantáneamente a cualquier variación lo convierte en un asistente quirúrgico imprescindible. Incansable y sin margen de error, DP_0031 ha revolucionado la anestesiología, garantizando intervenciones más seguras y eficientes en el Hospital Central del sector XVII.', 
+'DP-0031 es un robot anestesista de última generación diseñado para administrar anestesia con una precisión absoluta en procedimientos quirúrgicos interplanetarios. Equipado con inteligencia artificial avanzada y sensores biométricos en tiempo real, ajusta la dosificación con exactitud para cada paciente, independientemente de su fisiología o especie. Su capacidad para monitorear signos vitales y responder instantáneamente a cualquier variación lo convierte en un asistente quirúrgico imprescindible. Incansable y sin margen de error, DP-0031 ha revolucionado la anestesiología, garantizando intervenciones más seguras y eficientes en el Hospital Central del sector XVII.', 
 'FOTO');
 
 SELECT * FROM doctor;
