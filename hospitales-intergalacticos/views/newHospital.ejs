@@ -14,6 +14,7 @@
         <div class="col-11 col-md-7 col-xl-5">
           <form class="border border-1 p-4 rounded border-primary" action="/hospital/newHospital" method="post" enctype="multipart/form-data">
             <h2 class="text-center text-primary p-3">Añadir un hospital</h2>
+            <p style="color: red;" ><%= typeof message != 'undefined'? message:null %></p>
             <div class="mb-3">
               <label for="inputName" class="form-label">Nombre del Hospital</label>
               <input type="text" class="form-control" id="inputName" name="name" require>
@@ -50,7 +51,6 @@
               <label for="imputFile" class="form-label">Añade una foto del hospital</label>
               <input class="form-control" type="file" id="imputFile" name="image" require>
             </div>
-            <p style="color: red;" ><%= typeof message != 'undefined'? message:null %></p>
             <button type="submit" class="btn btn-primary m-1">Añadir</button>
             <button type="reset" class="btn btn-secondary m-1">Reiniciar formulario</button>
           </form>

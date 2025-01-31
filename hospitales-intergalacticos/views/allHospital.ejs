@@ -9,10 +9,11 @@
   <body>
     <%- include("modules/navbar.ejs") %>
 
-    <section class="container-fluid p-5">
-      <div class="row row-cols-2 row-cols-lg-2 d-flex justify-content-center">
-        <div class="col">
-          <% data.forEach((elem) => { %>
+    <section class="container-fluid">
+      <h2 class="text-center p-3">- Hospitales -</h2>
+      <div class="row row-cols-1 row-cols-md-2 justify-content-center">
+        <% data.forEach((elem) => { %>
+          <div class="col">
             <div class="card mb-3">
               <img src="/images/hospital/<%= elem.image %>" class="card-img-top" alt="Exterior del <%= elem.name %>">
               <div class="card-body">
@@ -21,8 +22,8 @@
                 <button class="btn btn-info" onclick="window.location.href='/hospital/oneHospital/<%= elem.hospital_id %>'">Más información</button>
               </div>
             </div>
-          <% }) %>
-        </div>
+          </div>
+        <% }) %>
       </div>
 
 

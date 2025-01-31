@@ -19,7 +19,7 @@ class HospitalControllers {
       res.render('newHospital', {message: "Las contraseñas no coinciden"});
     }
     else if (!name || !email || !password || !phone_number || !sector || !direction || !description || !req.file.filename){
-      res.render('newHospital', {message: "Algún campo está vacío"});
+      res.render('newHospital', {message: "Por favor, completa todos los campos"});
     }
     else {
       bcrypt.hash(password, 10, (errHash, hash) => {
