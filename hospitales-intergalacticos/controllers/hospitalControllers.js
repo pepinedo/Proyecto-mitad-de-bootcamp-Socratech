@@ -230,6 +230,6 @@ class HospitalControllers {
   };
 
 
-} //FIN DE LOS CONTROLADORES
+}; //FIN DE LOS CONTROLADORES
 
 module.exports = new HospitalControllers();
