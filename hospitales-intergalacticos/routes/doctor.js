@@ -37,6 +37,8 @@ router.get('/totalDeleteDoctor/:hospital_id/:doctor_id', doctorControllers.total
 router.get('/findDoctor', doctorControllers.openFindDoctor);
 
 /* Form del buscador de doctores */
-router.post('/formFindDoctor', doctorControllers.formFindDoctor);
+router.post('/formFindDoctorSelect', doctorControllers.formFindDoctorSelect);
+
+router.post('/formFindDoctorText', doctorControllers.formFindDoctorText);
 
 module.exports = router;

@@ -178,7 +178,7 @@ class DoctorControllers {
     })
   }
 
-  formFindDoctor = (req, res) => {
+  formFindDoctorSelect = (req, res) => {
     let select = req.body.select;
     let sql = `SELECT * FROM doctor`;
 
@@ -188,16 +188,16 @@ class DoctorControllers {
     else if(select == 2){
       sql = `SELECT * FROM doctor ORDER BY name DESC`;
     }
-    if(select == 3){
+    else if(select == 3){
       sql = `SELECT * FROM doctor ORDER BY last_name ASC`;
     }
-    if(select == 4){
+    else if(select == 4){
       sql = `SELECT * FROM doctor ORDER BY last_name DESC`;
     }
-    if(select == 5){
+    else if(select == 5){
       sql = `SELECT * FROM doctor ORDER BY speciality ASC`;
     }
-    if(select == 6){
+    else if(select == 6){
       sql = `SELECT * FROM doctor ORDER BY speciality DESC`;
     }
     connection.query(sql, (err, result) => {
@@ -207,8 +207,31 @@ class DoctorControllers {
       else {
         res.render('findDoctor', {data: result});
       }
-    })
-  }
+    });
+  };
+
+  formFindDoctorText = (req, res) => {
+    let {name, last_name, speciality} = req.body;
+    let sql = `SELECT * FROM doctor`;
+
+    if(name){
+      sql = `SELECT * FROM doctor WHERE name='${name}'`;
+    }
+    else if(last_name){
+      sql = `SELECT * FROM doctor WHERE last_name='${last_name}'`;
+    }
+    else if (speciality){
+      sql = `SELECT * FROM doctor WHERE speciality='${speciality}'`;
+    }
+    connection.query(sql, (err, result) => {
+      if(err){
+        throw err;
+      }
+      else{
+        res.render('findDoctor', {data: result});
+      }
+    });
+  };
 
 }; //FIN DE LOS CONTROLADORES
 

@@ -13,9 +13,34 @@
 
     <section class="container-md p-3">
       <h3 class="text-center p-3">Buscador de médicos</h3>
-      <div class="row  justify-content-center align-content-center">
-        <div class="col-6 pb-3">
-          <form action="/doctor/formFindDoctor" method="POST">
+      <div class="row flex-wrap justify-content-center align-content-center">
+        <div class="col-10">
+          <div class="row flex-wrap">
+            <div class="col-12 col-md-4 mb-3">
+              <form action="/doctor/formFindDoctorText" method="POST">
+                <label for="name" class="form-label fs-4">¿Cuál es su nombre?</label>
+                <input type="text" id="name" name="name" class="form-control">
+                <button class="btn btn-primary my-2">Buscar</button>
+              </form>
+            </div>
+            <div class="col-12 col-md-4 mb-3">
+              <form action="/doctor/formFindDoctorText" method="POST">
+                <label for="last_name" class="form-label fs-4">¿Cuál es su apellido?</label>
+                <input type="text" id="last_name" name="last_name" class="form-control">
+                <button class="btn btn-primary my-2">Buscar</button>
+              </form>
+            </div>
+            <div class="col-12 col-md-4 mb-3">
+              <form action="/doctor/formFindDoctorText" method="POST">
+                <label for="speciality" class="form-label fs-4">¿Cuál es su especialidad?</label>
+                <input type="text" id="speciality" name="speciality" class="form-control">
+                <button class="btn btn-primary my-2">Buscar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-10 pb-3">          
+          <form action="/doctor/formFindDoctorSelect" method="POST">
             <h4>¿Cómo quieres ordenarlos?</h4>
             <select class="form-select" aria-label="Default select example"  name="select">
               <option selected disabled>Selecciona el método de ordenación</option>
@@ -26,7 +51,7 @@
               <option value="5" >Especialidad, ascendente</option>
               <option value="6" >Especialidad, descendente</option>
             </select>
-            <button type="submit" class="btn btn-primary m-2">Ordenar</button>
+            <button type="submit" class="btn btn-primary my-2">Ordenar</button>
           </form>
         </div>
         <% data.forEach((elem) => { %>
@@ -34,7 +59,7 @@
             <div class="card mb-3">
               <div class="row g-0">
                 <div class="col-md-4">
-                  <img src="/images/doctor/<%= elem.image?elem.image:'default.jpg' %>" class="img-fluid rounded-start" alt="Retrato de <%= elem.name %>">
+                  <img src="/images/doctor/<%= elem.image ? elem.image : 'default.jpg' %>" class="img-fluid rounded-start" alt="Retrato de <%= elem.name %>">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body d-flex flex-column align-items-start justify-content-around">
