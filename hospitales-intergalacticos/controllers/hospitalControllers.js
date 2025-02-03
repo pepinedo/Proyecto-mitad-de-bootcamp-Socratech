@@ -8,8 +8,6 @@ class HospitalControllers {
   };
 
   formNewHospital = (req, res) => {
-    console.log(req.body);
-    console.log(req.file);
 
     let {name, email, password, repPassword, phone_number, sector, direction, description} = req.body;
 
@@ -69,8 +67,6 @@ class HospitalControllers {
             throw errDoctor;
           }
           else {
-            console.log("--------------- Result de hospital ---------------------\n", resultHospital);
-            console.log("--------------- Result de doctor ---------------------\n", resultDoctor);
             res.render('oneHospital', {dataHospital : resultHospital[0], dataDoctor : resultDoctor});
           }
         })
@@ -176,10 +172,10 @@ class HospitalControllers {
         }
         else {
           if(!req.file){
-            let sql = `INSERT INTO hospital (name, email, password, phone_number, sector, direction, description) VALUES ("${name}", "${email}", "${hash}", "${phone_number}", "${sector}", "${direction}", "${description}")`;
+            let sql = `UPDATE hospital SET name='${name}', email='${email}', password='${hash}', phone_number='${phone_number}', sector='${sector}', direction='${direction}', description='${description}' WHERE hospital_id='${id}'`; 
           }
           else{
-            let sql = `INSERT INTO hospital (name, email, password, phone_number, sector, direction, description, image) VALUES ("${name}", "${email}", "${hash}", "${phone_number}", "${sector}", "${direction}", "${description}", "${req.file.filename}")`;
+            let sql = `UPDATE hospital SET name='${name}', email='${email}', password='${hash}', phone_number='${phone_number}', sector='${sector}', direction='${direction}', description='${description}' image='${req.file.filename}' WHERE hospital_id='${id}'`;
           }
           connection.query(sql, (err, result) => {
             if(err){

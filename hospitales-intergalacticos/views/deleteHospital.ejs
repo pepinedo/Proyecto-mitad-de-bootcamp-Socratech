@@ -18,8 +18,8 @@
             <h2 class="text-center text-primary p-3">PÁGINA DE ELIMINADO DE DATOS</h2>
             <div class="mb-3">
               <h3>Eliminado lógico</h3>
-              <p>Esta opción eliminará el hospital y todos sus médicos de la página web pero seguirán conservándose sus datos en nuestra base de datos, por lo que, si se pone en contacto con el servicio técnico, podrán recuperarse si se necesitara. </p>
-              <p>Recomendamos que eliga esta opción, es más segura.</p>
+              <p>Esta opción eliminará el hospital y todos sus médicos de la página web pero seguirán conservándose sus datos en nuestra base de datos, por lo que, si se pone en contacto con el servicio técnico, podrán recuperarse. </p>
+              <p>Por seguridad recomendamos que eliga esta opción.</p>
               <button type="button" class="btn btn-danger"  onclick="window.location.href='/hospital/logicDeleteHospital/<%= data.hospital_id %>'">Eliminado Lógico</button>
             </div>
             <hr>
@@ -29,7 +29,7 @@
               <button type="button" class="btn btn-danger" onclick="window.location.href='/hospital/totalDeleteHospital/<%= data.hospital_id %>'">Eliminado Total</button>
             </div>
             <hr>
-            <button type="button" class="btn btn-secondary m-1" onclick="window.location.href='/hospital/oneHospital/<%= data.hospital_id %>'"> Volver</button>
+            <div class="d-flex align-content-end justify-content-end"><button type="button" class="btn btn-secondary m-1" onclick="window.location.href='/hospital/editHospital/<%= data.hospital_id %>'"> Volver</button></div>
           </form>
         </div>
       </section>

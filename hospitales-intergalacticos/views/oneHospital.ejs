@@ -52,7 +52,7 @@
                 <h5 class="card-title"><%= elem.name %></h5>
                 <h5 class="card-title"><%= elem.last_name %></h5>
                 <p class="card-text"><%= elem.speciality %></p>
-                <a href="#" class="btn btn-primary">Más información (x)</a>
+                <a href="#" class="btn btn-primary" onclick="window.location.href='/doctor/oneDoctor/<%= dataHospital.hospital_id %>/<%= elem.doctor_id %>'">Más información</a>
               </div>
             </div>
           </div>

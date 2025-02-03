@@ -11,19 +11,18 @@
   
     <section class="container-fluid d-flex justify-content-center p-5">
       <div class="col-11 col-md-7 col-xl-5">
-        <form class="border border-1 p-4 rounded border-primary" action="/hospital/lockFormEditHospital/<%= data.hospital_id %>" method="post">
-          <h3 class="text-center p-3 text-primary"><%= data.name %></h3>
+        <form class="border border-1 p-4 rounded border-primary" action="/doctor/lockFormEditDoctor/<%= data.hospital_id %>/<%= data.doctor_id %>" method="post">
+          <h3 class="text-center p-3 text-primary"><%= data.name %> <%= data.last_name %></h3>
           <h5 class="text-center p-3 text-primary">Introduce la contraseña del hospital</h5>
           <div class="mb-3">
             <input type="password" class="form-control" id="imputPassword" name="password" autofocus>
             <p style="color: red;" ><%= typeof message != 'undefined'? message:null %></p>
           </div> 
           <button type="submit" class="btn btn-primary m-1">Continuar</button>
-          <button type="button" class="btn btn-secondary m-1" onclick="window.location.href='/hospital/oneHospital/<%= data.hospital_id %>'">Volver</button>
+          <button type="button" class="btn btn-secondary m-1" onclick="window.location.href='/doctor/oneDoctor/<%= data.hospital_id %>/<%= data.doctor_id %>'">Volver</button>
         </form>
       </div>
     </section>
-
 
     <%- include("modules/footer.ejs") %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
