@@ -31,8 +31,6 @@ class DoctorControllers {
         }
       });
     }
-
-
   };
 
   openOneDoctor = (req, res) => {
@@ -167,7 +165,7 @@ class DoctorControllers {
   };
 
   openFindDoctor = (req, res) => {
-    let sql = 'SELECT doctor.*, hospital.name AS hospital_name FROM doctor JOIN hospital ON doctor.hospital_id = hospital.hospital_id;';
+    let sql = 'SELECT doctor.*, hospital.name AS hospital_name FROM doctor JOIN hospital ON doctor.hospital_id = hospital.hospital_id WHERE doctor.logic_delete=0';
     connection.query(sql, (err, result) => {
       if(err){
         throw err;
@@ -180,25 +178,25 @@ class DoctorControllers {
 
   formFindDoctorSelect = (req, res) => {
     let select = req.body.select;
-    let sql = `SELECT * FROM doctor`;
+    let sql = `SELECT * FROM doctor WHERE logic_delete=0`;
 
     if(select == 1){
-      sql = `SELECT * FROM doctor ORDER BY name ASC`;
+      sql = `SELECT * FROM doctor WHERE logic_delete=0 ORDER BY name ASC`;
     }
     else if(select == 2){
-      sql = `SELECT * FROM doctor ORDER BY name DESC`;
+      sql = `SELECT * FROM doctor WHERE logic_delete=0 ORDER BY name DESC`;
     }
     else if(select == 3){
-      sql = `SELECT * FROM doctor ORDER BY last_name ASC`;
+      sql = `SELECT * FROM doctor WHERE logic_delete=0 ORDER BY last_name ASC`;
     }
     else if(select == 4){
-      sql = `SELECT * FROM doctor ORDER BY last_name DESC`;
+      sql = `SELECT * FROM doctor WHERE logic_delete=0 ORDER BY last_name DESC`;
     }
     else if(select == 5){
-      sql = `SELECT * FROM doctor ORDER BY speciality ASC`;
+      sql = `SELECT * FROM doctor WHERE logic_delete=0 ORDER BY speciality ASC`;
     }
     else if(select == 6){
-      sql = `SELECT * FROM doctor ORDER BY speciality DESC`;
+      sql = `SELECT * FROM doctor WHERE logic_delete=0 ORDER BY speciality DESC`;
     }
     connection.query(sql, (err, result) => {
       if(err){
@@ -212,16 +210,16 @@ class DoctorControllers {
 
   formFindDoctorText = (req, res) => {
     let {name, last_name, speciality} = req.body;
-    let sql = `SELECT * FROM doctor`;
+    let sql = `SELECT * FROM doctor WHERE logic_delete=0`;
 
     if(name){
-      sql = `SELECT * FROM doctor WHERE name='${name}'`;
+      sql = `SELECT * FROM doctor WHERE logic_delete=0 AND name LIKE "%${name}%"`;
     }
     else if(last_name){
-      sql = `SELECT * FROM doctor WHERE last_name='${last_name}'`;
+      sql = `SELECT * FROM doctor WHERE logic_delete=0 AND last_name LIKE '%${last_name}%'`;
     }
     else if (speciality){
-      sql = `SELECT * FROM doctor WHERE speciality='${speciality}'`;
+      sql = `SELECT * FROM doctor WHERE logic_delete=0 AND speciality LIKE '%${speciality}%'`;
     }
     connection.query(sql, (err, result) => {
       if(err){
